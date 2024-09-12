@@ -16,7 +16,7 @@ class ExperienciaLaboral extends BaseController
         $this->ExperienciaLaboralModel = new ExperienciaLaboralModel();
         $this->UsuarioModel = new UsuarioModel();
     }
-
+//Metodo para mostrar la vista de experiencias laborales
     public function index()
     {
         $id = session()->get('id');
