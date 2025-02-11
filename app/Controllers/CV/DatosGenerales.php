@@ -108,7 +108,7 @@ use App\Models\CV\DatosGenerales\UbicacionModel;class DatosGenerales extends Bas
         'correo' => 'required|valid_email',
         'correo_adicional' => 'permit_empty|valid_email',
         'fecha_nacimiento' => 'required',
-        'edad' => 'required|numeric|max_length[2]',
+        'edad' => 'required',
         'genero' => 'required',
         'no_celular' => 'permit_empty|numeric|max_length[10]',
         'foto_personal' => 'max_size[foto_personal,1024]|is_image[foto_personal]|ext_in[foto_personal,jpg,jpeg,png]|permit_empty'
@@ -143,8 +143,6 @@ use App\Models\CV\DatosGenerales\UbicacionModel;class DatosGenerales extends Bas
         ],
         'edad' => [
             'required' => 'El campo edad es requerido',
-            'numeric' => 'El campo edad solo puede contener números',
-            'max_length' => 'El campo edad solo puede contener 2 dígitos'
         ],
         'genero' => [
             'required' => 'El campo género es requerido'
