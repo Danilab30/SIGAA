@@ -2,7 +2,7 @@
 <?php $this->section("contenido"); ?>
 
 <link rel="stylesheet" href="<?= base_url('dist/css/custom/cv/general.css') ?>">
-<link rel="stylesheet" href="<?= base_url('dist/css/custom/cv/datosGenerales.css') ?>">
+<link rel="stylesheet" href="<?= base_url('dist/css/custom/cv/DatosGenerales.css') ?>">
 
 
 <!-- ---------------------------------------- -->
@@ -21,7 +21,7 @@
 <?php endif; ?>
 <div class="section-container datos-generales-container">
   <div class="header-container">
-    <h2 class="header-title"><i class="fas fa-id-card"></i> Información Personal</h2>
+    <h2 class="header-titler"><i class="fas fa-id-card"></i> Información Personal</h2>
   </div>
 
   <p class="section-description">
@@ -39,29 +39,34 @@
       </div>
     </div>
     <div class="datos-generales-info">
-      <div class="datos-generales-nombre">
-        <?= esc($usuario['nombre'] . ' ' . $usuario['apellido_paterno'] . ' ' . $usuario['apellido_materno']) ?>
-      </div>
+    <div class="datos-generales-nombre">
+    <?= esc(
+        ($usuario['nombre'] ?? '') . ' ' .
+        ($usuario['apellido_paterno'] ?? '') . ' ' .
+        ($usuario['apellido_materno'] ?? '')
+    ) ?>
+</div>
+
       <div class="datos-generales-columnas">
         <div class="datos-generales-columna">
           <div class="datos-item">
             <span class="datos-label"><i class="fas fa-birthday-cake"></i> Fecha de Nacimiento:</span>
             <span class="datos-valor">
-    <?= esc(!empty(trim($datosGenerales['fecha_nacimiento'])) 
+    <?= esc(!empty(trim($datosGenerales['fecha_nacimiento']?? '')) 
             ? date('d-m-Y', strtotime($datosGenerales['fecha_nacimiento'])) 
             : 'No disponible') ?>
 </span>
 
           </div>
-          <div class="datos-item">
+            <div class="datos-item">
             <span class="datos-label"><i class="fas fa-user"></i> Edad:</span>
             <span
-              class="datos-valor"><?= esc(!empty(trim($datosGenerales['edad'])) ? $datosGenerales['edad'] : 'No disponible') ?></span>
+              class="datos-valor"><?= esc(!empty(trim($datosGenerales['edad']?? '')) ? $datosGenerales['edad'] : 'No disponible') ?></span>
           </div>
           <div class="datos-item">
             <span class="datos-label"><i class="fas fa-venus-mars"></i> Género:</span>
             <span
-              class="datos-valor"><?= esc(!empty(trim($datosGenerales['genero'])) ? $datosGenerales['genero'] : 'No disponible') ?></span>
+              class="datos-valor"><?= esc(!empty(trim($datosGenerales['genero'] ?? '')) ? $datosGenerales['genero'] : 'No disponible') ?></span>
           </div>
         </div>
         <div class="datos-generales-columna">
@@ -73,7 +78,7 @@
           <div class="datos-item">
             <span class="datos-label"><i class="fas fa-mobile-alt"></i> No. Celular:</span>
             <span
-              class="datos-valor"><?= esc(!empty(trim($datosGenerales['no_celular'])) ? $datosGenerales['no_celular'] : 'No disponible') ?></span>
+              class="datos-valor"><?= esc(!empty(trim($datosGenerales['no_celular'] ?? '' )) ? $datosGenerales['no_celular'] : 'No disponible') ?></span>
           </div>
           <div class="datos-item">
             <span class="datos-label"><i class="fas fa-envelope"></i> Correo Electrónico:</span>
@@ -81,10 +86,12 @@
               class="datos-valor"><?= esc(!empty(trim($usuario['correo'])) ? $usuario['correo'] : 'No disponible') ?></span>
           </div>
           <div class="datos-item">
-            <span class="datos-label"><i class="fas fa-envelope-open"></i> Correo Electrónico Alterno:</span>
-            <span
-              class="datos-valor"><?= esc(!empty(trim($usuario['correo_adicional'])) ? $usuario['correo_adicional'] : 'No disponible') ?></span>
-          </div>
+    <span class="datos-label"><i class="fas fa-envelope-open"></i> Correo Electrónico Alterno:</span>
+    <span class="datos-valor">
+        <?= esc(!empty($usuario['correo_adicional']) ? trim($usuario['correo_adicional']) : 'No disponible') ?>
+    </span>
+</div>
+
         </div>
 
       </div>
@@ -109,7 +116,7 @@
 
 <div class="section-container">
   <div class="header-container">
-    <h2 class="header-title"><i class="fas fa-map-marker-alt"></i> Domicilios</h2>
+    <h2 class="header-title"><i class="fas fa-map-marker-alt"></i> Domicilio</h2>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#domicilioModal"
       title="Agregar Domicilio">
       <i class="fas fa-plus-circle"></i> Agregar Domicilio
@@ -180,17 +187,17 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="domicilioModalLabel">Agregar Domicilio</h5>
+        <h5 class="modal-title" id="domicilioModalLabel">
+        </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-    <form action="<?= base_url('Cv/datosgenerales/saveAddress') ?>" method="post" id="modalFormDomicilio">
+<form action="<?= base_url('/cv/datosgenerales/saveAddress') ?>" method="post" id="modalFormDomicilio">
         <input type="hidden" id="id_domicilio" name="id_domicilio">
         <input type="hidden" id="id_ubicacion" name="id_ubicacion">
 
-        <!-- Asegúrate de que los campos estén correctamente alineados y agrupados -->
         <div class="form-row">
     <div class="col-md-6 form-group">
         <label for="calle"><i class="fas fa-road"></i> Calle</label>

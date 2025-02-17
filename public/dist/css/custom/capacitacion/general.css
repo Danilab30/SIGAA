@@ -98,6 +98,22 @@
   background: linear-gradient(to right, var(--primary-color), #047bcf);
   margin-bottom: 8px;
 }
+
+/* Filtro de año */
+.d-flex {
+  display: flex !important;
+  flex-wrap: nowrap;
+}
+
+#yearFilter {
+  flex-grow: 1;
+}
+
+#btnExportExcel {
+  margin-left: 10px;
+}
+
+/* Tabla */
 .table-responsive table th {
   color: var(--primary-color);
 }

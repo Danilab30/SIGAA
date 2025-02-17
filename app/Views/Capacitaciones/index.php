@@ -40,8 +40,33 @@
 
     <div class="row mb-3">
         <div class="col-lg-3 col-md-6">
-            <div class="statistics-panel panel-primary">
+            <div class="form-group">
+                <label for="yearFilter"><i class="fas fa-calendar-year"></i> Filtrar por año:</label>
+                <div class="d-flex">
+                    <select class="form-control" id="yearFilter">
 
+                        <option value="" selected>Todos los años</option>
+                        <?php
+                        $currentYear = date('Y');
+                        for ($year = $currentYear; $year >= $currentYear - 5; $year--) {
+                            echo "<option value='$year'>$year</option>";
+                        }
+                        ?>
+                    </select>
+                    <button id="btnExportExcel" class="btn btn-success" title="Exportar a Excel">
+                        <i class="fas fa-file-excel"></i> Exportar a Excel
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row mb-3">
+        <div class="col-lg-3 col-md-6">
+            <div class="statistics-panel panel-primary">
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-8 text-left">
@@ -156,110 +181,7 @@
 
 <!-- /#page-wrapper -->
 
-<?php $this->endSection(); ?>
-
-<?php $this->section("js"); ?>
-
-<script>
-    $(document).ready(function () {
-        function eliminar(id) {
-            Swal.fire({
-                title: '<div style="text-align: center;">¿Desea proceder con la eliminación de esta capacitación?</div>',
-                html: "<div style='text-align: left;'>" +
-                    "<p>Esta acción eliminará permanentemente:</p>" +
-                    "<ul>" +
-                    "<li>La información de la capacitación seleccionada</li>" +
-                    "</ul>" +
-                    "<p><strong>Advertencia:</strong> Una vez eliminada, no podrá recuperarse.</p>" +
-                    "</div>",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Sí, eliminarla!',
-                cancelButtonText: 'Cancelar'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    location.href = "<?= base_url(); ?>/capacitaciones/eliminar/" + id;
-                }
-            });
-        }
-        $(".btn-eliminar").click(function () {
-            var id = $(this).data("id");
-            eliminar(id);
-        });
-    });
-</script>
-
-<script>
-    $(document).ready(function () {
-        var horas_diciplinarias = 0;
-        var horas_docentes = 0;
-        var fecha = "";
-        $('.fecha_inicial').each(function (index, element) {
-            fecha = $(element).text();
-            año = new Date().getFullYear();
-        });
-        $(".tipo").each(function (index, element) {
-            if ($(element).text() == "Disciplinar" && $(element).parent().find(".estado").text() == "Aceptado") {
-                if ($(element).parent().find(".fecha_inicial").text().includes(año)) {
-                    horas_diciplinarias += parseInt($(element).parent().find(".horas").text());
-                }
-            } else if ($(element).text() == "Docente" && $(element).parent().find(".estado").text() == "Aceptado") {
-                if ($(element).parent().find(".fecha_inicial").text().includes(año)) {
-                    horas_docentes += parseInt($(element).parent().find(".horas").text());
-                }
-            }
-        });
-
-        $("#horas_docentes").text(`${horas_docentes}/20`);
-        $("#horas_diciplinarias").text(`${horas_diciplinarias}/20`);
-    });
-</script>
-
-<script>
-    jQuery.extend(jQuery.fn.dataTableExt.oSort, {
-        "date-eu-pre": function (date) {
-            var dateParts = date.split('-');
-            return Date.parse(`${dateParts[1]}-${dateParts[0]}-${dateParts[2]}`) || 0;
-        },
-        "date-eu-asc": function (a, b) {
-            return a - b;
-        },
-        "date-eu-desc": function (a, b) {
-            return b - a;
-        }
-    });
-
-    $(document).ready(function () {
-        $('#table_cap').DataTable({
-            "order": [[4, "asc"], [5, "asc"]],
-            "columnDefs": [
-                { "type": "date-eu", "targets": [4, 5] }
-            ],
-            language: {
-                "decimal": "",
-                "emptyTable": "No hay información",
-                "info": "Mostrando _START_ a _END_ de _TOTAL_ registros",
-                "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
-                "infoFiltered": "(Filtrado de _MAX_ total registros)",
-                "infoPostFix": "",
-                "thousands": ",",
-                "lengthMenu": "Mostrar _MENU_ registros",
-                "loadingRecords": "Cargando...",
-                "processing": "Procesando...",
-                "search": "Buscar:",
-                "zeroRecords": "Sin resultados encontrados",
-                "paginate": {
-                    "first": "Primero",
-                    "last": "Ultimo",
-                    "next": "Siguiente",
-                    "previous": "Anterior"
-                }
-            }
-        });
-    });
-</script>
+<script src="<?= base_url('dist/js/custom/capacitaciones/index.js') ?>"></script>
 
 
 <?php $this->endSection(); ?>

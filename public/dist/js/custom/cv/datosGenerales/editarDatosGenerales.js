@@ -1,10 +1,10 @@
 function previewImage(event) {
     var file = event.target.files[0];
-    var maxSize = 5 * 1024 * 1024; // Tamaño máximo en bytes (5 MB)
-    var maxWidth = 1920; // Ancho máximo en píxeles
-    var maxHeight = 1080; // Alto máximo en píxeles
+    var maxSize = 5 * 1024 * 1024;
+    var maxWidth = 1920; 
+    var maxHeight = 1080; 
 
-    // Verificar tamaño del archivo
+   
     if (file.size > maxSize) {
         alert('El tamaño del archivo es demasiado grande. Por favor selecciona un archivo más pequeño.');
         event.target.value = ''; 
@@ -15,18 +15,17 @@ function previewImage(event) {
     reader.onload = function(e) {
         var image = new Image();
         image.onload = function() {
-            // Verificar dimensiones de la imagen
             if (this.width > maxWidth || this.height > maxHeight) {
                 alert('La resolución de la imagen es demasiado alta. Por favor selecciona una imagen con resolución menor.');
                 event.target.value = ''; 
                 return;
             }
 
-            // Mostrar vista previa si las verificaciones son exitosas
+       
             var output = document.getElementById('preview-image');
             output.src = e.target.result;
 
-            // Mostrar nombre del archivo
+           
             var label = event.target.nextElementSibling;
             label.textContent = file.name;
         };
@@ -42,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-// Funcion para calcular la edad a partir de la fecha de nacimiento
  function calcularEdad(fechaNacimiento) {
         const hoy = new Date();
         const nacimiento = new Date(fechaNacimiento);

@@ -92,3 +92,27 @@
 
 
 <?php $this->endSection(); ?>
+
+<div class="form-group col-md-6">
+
+    <label for="id_campus"><i class="fas fa-file-alt"></i> Campus Imparte</label>
+
+    <select class="form-control" name="id_campus">
+
+        <option value="">Seleccione un campus...</option>
+
+        <?php foreach ($campus as $camp): ?>
+
+            <option value="<?= $camp['id'] ?>" <?= old('id_campus') == $camp['id'] ? 'selected' : '' ?>>
+
+                <?= $camp['nombre'] ?>
+
+            </option>
+
+        <?php endforeach; ?>
+
+    </select>
+
+    <p class='page-warning'><?= session('errors.id_campus') ?></p>
+
+</div>
