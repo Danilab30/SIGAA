@@ -410,13 +410,13 @@ width: 100%;
 }
 
 .list-group-item strong {
-    display: block; /* Mostrar nombre de clase en línea separado */
-    font-size: 1.2rem; /* Tamaño de fuente */
-    color: #007bff; /* Color */
+    display: block; 
+    font-size: 1.2rem; 
+    color: #007bff;
 }
 
 .list-group-item p {
-    margin-bottom: 0; /* Espaciado inferior */
-    color: #6c757d; /* Color del texto */
+    margin-bottom: 0;
+    color: #6c757d; 
 }
 

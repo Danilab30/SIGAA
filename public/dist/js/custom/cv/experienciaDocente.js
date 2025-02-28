@@ -60,7 +60,7 @@ $(document).on('click', '.add-autor', function() {
 // Limpiar el contenedor de autores al cerrar el modal
 $('#autorModal').on('hidden.bs.modal', function () {
     $('#autores-container').empty();
-    addAutorField(); // Opcional: vuelve a añadir un campo por defecto si quieres
+    addAutorField(); 
 });
 
   // Lógica del modal de experiencia docente
@@ -183,8 +183,6 @@ $('#autorModal').on('hidden.bs.modal', function () {
     } else {
       console.log('No se recibieron autores o el formato es incorrecto');
     }
-
-    // Agregar un campo vacío al final si no hay autores
     addAutorField();
   });
 
@@ -250,7 +248,7 @@ $('#autorModal').on('hidden.bs.modal', function () {
     $("#organismo_externo_container").toggle(tipoFinanciamiento === "Externo");
   }
 
-  // Configurar botones de eliminación
+
   function setupDeleteButtons(selector, deleteUrl, successMessage) {
     $(selector).click(function () {
       var id = $(this).data("id");
@@ -271,7 +269,6 @@ $('#autorModal').on('hidden.bs.modal', function () {
   setupDeleteButtons(".btn-eliminar-vinculacion", baseUrl + "/Cv/experienciadocente/deleteVinculacion", "Vinculación eliminada");
   setupDeleteButtons(".btn-eliminar-evento-academico", baseUrl + "/Cv/experienciadocente/deleteEventoAcademico", "Evento académico eliminado");
 
-   // Event listener para el botón "Gestionar Clases"
   $(document).on("click", ".btn-gestionar-clases", function () {
     var id = $(this).data("id");
     window.location.href = baseUrl + "/Cv/experienciadocente/manageClasses/" + id;
@@ -297,7 +294,6 @@ $('#autorModal').on('hidden.bs.modal', function () {
             html += "</tr>";
           });
           $("#table_capacitaciones tbody").html(html);
-          // Reinicializa DataTable después de actualizar el contenido
           $("#table_capacitaciones").DataTable().destroy();
           CommonFunctions.initializeDataTable("#table_capacitaciones");
         } else {
@@ -333,7 +329,6 @@ $('#autorModal').on('hidden.bs.modal', function () {
       data: { capacitaciones: capacitacionesSeleccionadas },
       success: function (response) {
         if (response.success) {
-          // Recargar la página después de actualizar las capacitaciones
           window.location.reload();
         } else {
           alert("Hubo un error al guardar las capacitaciones");

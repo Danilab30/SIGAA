@@ -76,7 +76,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="nombre"><i class="fas fa-briefcase"></i> Nombre</label>
-                                <input type="text" class="form-control" name="nombre" id="nombre">
+                                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingrese el nombre">
                                 <div class="page-warning"></div>
                             </div>
                             <div class="col-md-6">

@@ -91,7 +91,7 @@
                         <a class="btn btn-primary" href="<?= base_url(); ?>/capacitaciones/<?= $usuario["slug"] ?>">
                             <i class="fas fa-book"></i> Capacitaciones
                         </a>
-                        <a class="btn btn-danger" data-id="<?= $usuario["id"] ?>">
+                        <a class="btn btn-danger btn-eliminar" data-id="<?= $usuario["id"] ?>">
                             <i class="fas fa-trash-alt"></i>
                         </a>
                     </td>

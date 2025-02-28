@@ -54,6 +54,14 @@ $currentUrl = current_url();
 
     <!-- Fuente HTML -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <!-- En tu encabezado o antes de cerrar el body -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.es.min.js"></script>
 
 </head>
 
@@ -109,8 +117,8 @@ $currentUrl = current_url();
                                 </a>
                             </li>
                             <li>
-                                <a href="<?= base_url(); ?>/proximo"
-                                    class="<?= ($currentUrl == base_url() . '/proximo') ? 'active' : '' ?>">
+                                <a href="<?= base_url(); ?>/programaEducativo"
+                                    class="<?= ($currentUrl == base_url() . '/programaEducativo') ? 'active' : '' ?>">
                                     <i class="fa-solid fa-book"></i> Programas Educativos
                                 </a>
                             </li>
@@ -171,6 +179,12 @@ $currentUrl = current_url();
                                         </a>
                                     </li>
                                     <li>
+                                        <a href="<?= base_url(); ?>/cv/gestionacademica"
+                                            class="<?= ($currentUrl == base_url() . '/cv/gestionacademica') ? 'active' : '' ?>">
+                                            <i class="fa-solid fa-book"></i> Gestión Académica
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a href="<?= base_url(); ?>/cv/premios"
                                             class="<?= ($currentUrl == base_url() . '/cv/premios') ? 'active' : '' ?>">
                                             <i class="fa-solid fa-award"></i> Premios o Distinciones
@@ -186,6 +200,24 @@ $currentUrl = current_url();
                                         <a href="<?= base_url(); ?>/cv/asociaciones"
                                             class="<?= ($currentUrl == base_url() . '/cv/asociaciones') ? 'active' : '' ?>">
                                             <i class="fa-solid fa-handshake"></i> Asociaciones Profesionales
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?= base_url(); ?>/cv/productoacademico"
+                                            class="<?= ($currentUrl == base_url() . '/cv/productoacademico') ? 'active' : '' ?>">
+                                            <i class="fa-solid fa-book"></i> Producto Académico
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?= base_url(); ?>/cv/disenoingenieril"
+                                            class="<?= ($currentUrl == base_url() . '/cv/disenoingenieril') ? 'active' : '' ?>">
+                                            <i class="fa-solid fa-drafting-compass"></i> Diseño Ingenieril
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?= base_url(); ?>/cv/aportacionpe"
+                                            class="<?= ($currentUrl == base_url() . '/cv/aportacionpe') ? 'active' : '' ?>">
+                                            <i class="fa-solid fa-handshake"></i> Aportación Profesional Especializada
                                         </a>
                                     </li>
                                 </ul>
@@ -259,8 +291,6 @@ $currentUrl = current_url();
         .nav>li {
             border-bottom: 1px solid #e7e7e7;
         }
-
-
 
     </style>
 

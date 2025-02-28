@@ -73,6 +73,7 @@ $routes->get('capacitaciones/(:num)', 'Capacitacion::capacitacionesMaestro/$1', 
 $routes->get('/cv', 'CV\Admin::index', ['filter' => 'authentication']);
 $routes->get('/admin/ver_cv/(:segment)', 'CV\Admin::verCV/$1', ['filter' => 'authentication']);
 $routes->get('/cv/Admin/getClases/(:num)', 'CV\Admin::getClases/$1',['filter' => 'authentication']);
+$routes->get('/admin/descargarCv/(:segment)', 'CV\Admin::descargarCv/$1', ['filter' => 'authentication']);
 
 
 
@@ -129,6 +130,48 @@ $routes->get('/cv/experienciadocente/manageClasses/(:num)', 'CV\ExperienciaDocen
 $routes->post('/cv/experienciadocente/saveProject', 'CV\ExperienciaDocente::saveProject', ['filter' => 'authentication']);
 //Ruta para eliminar el proyecto
 $routes->post('/cv/experienciadocente/deleteProject/(:num)', 'CV\ExperienciaDocente::deleteProject/$1', ['filter' => 'authentication']);
+
+
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Gestion Academica
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Ruta para el índice
+$routes->get('/cv/gestionacademica', 'CV\GestionAcademica::index', ['filter' => 'authentication']);
+// Ruta para guardar
+$routes->post('/cv/gestionacademica/save', 'CV\GestionAcademica::save', ['filter' => 'authentication']);
+// Ruta para eliminar
+$routes->post('/cv/gestionacademica/delete/(:num)', 'CV\GestionAcademica::delete/$1', ['filter' => 'authentication']);
+
+
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Producto Academico
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Ruta para el índice
+$routes->get('/cv/productoacademico', 'CV\ProductoAcademico::index', ['filter' => 'authentication']);
+// Ruta para guardar-Editar
+$routes->post('/cv/productoacademico/save', 'CV\ProductoAcademico::save', ['filter' => 'authentication']);
+// Ruta para eliminar
+$routes->post('/cv/productoacademico/delete/(:num)', 'CV\ProductoAcademico::delete/$1', ['filter' => 'authentication']);
+
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Diseno Ingenieril
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Ruta para el índice
+$routes->get('/cv/disenoingenieril', 'CV\DisenoIngenieril::index', ['filter' => 'authentication']);
+// Ruta para guardar
+$routes->post('/cv/disenoingenieril/save', 'CV\DisenoIngenieril::save', ['filter' => 'authentication']);
+// Ruta para eliminar
+$routes->post('/cv/disenoingenieril/delete/(:num)', 'CV\DisenoIngenieril::delete/$1', ['filter' => 'authentication']);
+
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Aportacion PE
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Ruta para el índice
+$routes->get('/cv/aportacionpe', 'CV\AportacionPE::index', ['filter' => 'authentication']);
+// Ruta para guardar
+$routes->post('/cv/aportacionpe/save', 'CV\AportacionPE::save', ['filter' => 'authentication']);
+// Ruta para eliminar
+$routes->post('/cv/aportacionpe/delete/(:num)', 'CV\AportacionPE::delete/$1', ['filter' => 'authentication']);
 
 
 
@@ -203,6 +246,14 @@ $routes->get('/cv/asociaciones', 'CV\AsociacionProfesional::index', ['filter' =>
 $routes->post('/cv/asociaciones/save', 'CV\AsociacionProfesional::save', ['filter' => 'authentication']);
 // Ruta para eliminar
 $routes->post('/cv/asociaciones/delete/(:num)', 'CV\AsociacionProfesional::delete/$1', ['filter' => 'authentication']);
+
+
+
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Programa Educativo
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+$routes->get('/programaEducativo', 'ProgramaEducativo::index', ['filter' => 'authentication']);
 
 
 

@@ -6,7 +6,9 @@ use App\Models\UsuarioModel;
 use App\Models\CvModel;
 use App\Models\CV\DatosGenerales\DatosGeneralesModel;
 use App\Models\CV\DatosGenerales\DomicilioModel;
-use App\Models\CV\DatosGenerales\UbicacionModel;class DatosGenerales extends BaseController
+use App\Models\CV\DatosGenerales\UbicacionModel;
+
+class DatosGenerales extends BaseController
 {
     private $UsuarioModel;
     private $CvModel;

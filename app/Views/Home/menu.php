@@ -40,7 +40,7 @@
                 </a>
             </div>
             <div class="col-xs-12 col-sm-4">
-                <a href="<?= base_url(); ?>/proximo" class="menu-button btn btn-lg btn-block btn-primary">
+                <a href="<?= base_url(); ?>/programaEducativo" class="menu-button btn btn-lg btn-block btn-primary">
                     <div class="button-icon"><i class="fa fa-book fa-2x"></i></div>
                     <div class="button-title">Programas Educativos</div>
                 </a>

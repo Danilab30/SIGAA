@@ -1,28 +1,25 @@
 $(document).ready(function () {
-    // Inicializa DataTable
-    CommonFunctions.initializeDataTable("#table_experiencia_laboral");
 
-    // Inicializa manejadores comunes
+    CommonFunctions.initializeDataTable("#table_gestion_academica");
+
     CommonFunctions.initializeCommonHandlers();
 
-    // Inicializa modal para agregar/editar experiencia laboral
     CommonFunctions.initializeModal(
-        '#experienciaLaboralModal',
-        '#modalFormExperienciaLaboral',
-        baseUrl + '/Cv/experiencialaboral/save'
+        '#gestionAcademicaModal',
+        '#modalFormGestionAcademica',
+        baseUrl + '/Cv/gestionacademica/save'
     );
 
-    // Lógica del modal de experiencia laboral
-    $("#experienciaLaboralModal").on("show.bs.modal", function (event) {
+    $("#gestionAcademicaModal").on("show.bs.modal", function (event) {
         var button = $(event.relatedTarget);
         var id = button.data("id");
         var modal = $(this);
 
         if (id) {
-            modal.find(".modal-title").text("Editar Experiencia Laboral");
-            modal.find("#id_experiencia_laboral").val(id);
-            modal.find("#actividad_puesto").val(button.data("actividad_puesto"));
-            modal.find("#empresa").val(button.data("empresa"));
+            modal.find(".modal-title").text("Editar Gestión Académica");
+            modal.find("#id_gestion_academica").val(id);
+            modal.find("#puesto").val(button.data("puesto"));
+            modal.find("#institucion").val(button.data("institucion"));
             modal.find("#mes_inicio").val(button.data("mes_inicio"));
             modal.find("#anio_inicio").val(button.data("anio_inicio"));
             modal.find("#mes_fin").val(button.data("mes_fin"));
@@ -30,30 +27,29 @@ $(document).ready(function () {
             modal.find("#actualmente").prop("checked", button.data("actualmente") == "1");
             toggleFechaFin();
         } else {
-            modal.find(".modal-title").text("Agregar Experiencia Laboral");
+            modal.find(".modal-title").text("Agregar Gestión Académica");
             modal.find("form")[0].reset();
-            modal.find("#id_experiencia_laboral").val("");
+            modal.find("#id_gestion_academica").val("");
         }
     });
 
-    // Lógica para eliminar experiencia laboral
-    $(".btn-eliminar-experiencia-laboral").click(function () {
+    $(".btn-eliminar-gestion-academica").click(function () {
         var id = $(this).data("id");
         CommonFunctions.confirmarEliminacion(
-            baseUrl + "/Cv/experiencialaboral/delete/" + id,
+            baseUrl + "/Cv/gestionAcademica/delete/" + id,
             "¿Estás seguro?",
             "¡No podrás revertir esto!",
-            "Experiencia laboral eliminada"
+            "Gestión académica eliminada"
         );
     });
 
     $("#actualmente").change(toggleFechaFin);
 
-    // Función para mostrar/ocultar fecha de fin
     function toggleFechaFin() {
         var currentlyChecked = $("#actualmente").is(":checked");
         $("#fechaFinContainer").toggle(!currentlyChecked);
     }
 
     toggleFechaFin();
+
 });
