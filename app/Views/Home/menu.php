@@ -20,7 +20,7 @@
     </div>
 
     <div class="row mb-3">
-        <?php if (isset($_SESSION["rol"]) && $_SESSION["rol"] == "admin") { ?>
+        <?php if (isset($_SESSION["rol"]) && $_SESSION["rol"] == "Administrador") { ?>
             <div class="col-xs-12 col-sm-4">
                 <a href="<?= base_url(); ?>/usuarios" class="menu-button btn btn-lg btn-block btn-primary">
                     <div class="button-icon"><i class="fa fa-chalkboard-teacher fa-2x"></i></div>
@@ -59,7 +59,7 @@
             </div>
         <?php } ?>
 
-        <?php if (isset($_SESSION["rol"]) && $_SESSION["rol"] != "admin") { ?>
+        <?php if (isset($_SESSION["rol"]) && $_SESSION["rol"] != "Administrador") { ?>
             <div class="col-xs-12 col-sm-4">
                 <a href="<?= base_url(); ?>/capacitaciones" class="menu-button btn btn-lg btn-block btn-primary">
                     <div class="button-icon"><i class="fa fa-chalkboard-teacher fa-2x"></i></div>

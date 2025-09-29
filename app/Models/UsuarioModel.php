@@ -17,7 +17,7 @@ class UsuarioModel extends Model
         "telefono",
         "contrasena",
         "id_campus",
-        "rol",
+        "id_rol",
         "matricula",
         "reset_token", 
         "reset_expiry",

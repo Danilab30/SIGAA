@@ -65,11 +65,13 @@ class Home extends BaseController
       $matricula = $this->request->getPost("matricula");
       $password = $this->request->getPost("password");
       $UsuarioModel = new UsuarioModel();
+      $RolModel = new \App\Models\RolModel();
       $datosUsuario = $UsuarioModel->where('matricula', $matricula)->first();
   
       if ($datosUsuario) {
           if (password_verify($password, $datosUsuario['contrasena'])) {
-              if ($datosUsuario['id'] > 0) {
+            $nombreRol = $RolModel->getRolName($datosUsuario['id_rol']);  
+            if ($nombreRol) {
                   $data = [
                       "id" => $datosUsuario['id'],
                       "nombre" => $datosUsuario['nombre'],
@@ -77,7 +79,8 @@ class Home extends BaseController
                       "correo_adicional" => $datosUsuario['correo_adicional'],
                       "telefono" => $datosUsuario['telefono'],
                       "id_campus" => $datosUsuario['id_campus'],
-                      "rol" => $datosUsuario['rol'],
+                      "rol" => $nombreRol, 
+                      "id_rol" => $datosUsuario['id_rol'],
                       "matricula" => $datosUsuario['matricula'],
                       "slug" => $datosUsuario['slug'] 
                   ];
@@ -91,6 +94,7 @@ class Home extends BaseController
               return redirect()->back()->withInput()->with('errors', ['password' => 'La contraseña es incorrecta.']);
           }
       } else {
+            return redirect()->back()->withInput()->with('errors', ['general' => 'La matrícula o contraseña son incorrectos']);
       }
   }
   
